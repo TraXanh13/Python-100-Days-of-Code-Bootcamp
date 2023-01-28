@@ -7,10 +7,6 @@ alphabet = [
 
 print(logo)
 
-direction = input("Type 'encode' to encrypt, type 'decode' to decrypt:\n")
-text = input("Type your message:\n").lower()
-shift = int(input("Type the shift number:\n"))
-
 
 def caesar(text, shift, direction):
     if direction == "decode":
@@ -21,7 +17,17 @@ def caesar(text, shift, direction):
             position = alphabet.index(char)
             new_position = (position + shift) % 26
             end_text += alphabet[new_position]
+        else:
+            end_text += char
     print(f"The {direction}d text is {end_text}")
 
 
-caesar(text, shift, direction)
+running = 'y'
+while (running == 'y'):
+    direction = input("Type 'encode' to encrypt, type 'decode' to decrypt:\n")
+    text = input("Type your message:\n").lower()
+    shift = int(input("Type the shift number:\n"))
+
+    caesar(text, shift, direction)
+    running = input(
+        "Type 'y' if you want to go again. Otherwise type 'n'.\n").lower()

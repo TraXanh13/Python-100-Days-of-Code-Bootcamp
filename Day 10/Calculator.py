@@ -1,5 +1,7 @@
 from CalculatorArt import logo
 
+isRunning = True
+
 
 def add(n1, n2):
     return n1 + n2
@@ -27,13 +29,22 @@ operations = {
 print(logo)
 
 num1 = float(input("What's the first number? "))
-num2 = float(input("What's the second number? "))
+while isRunning:
+    for symbol in operations:
+        print(symbol)
 
-for symbol in operations:
-    print(symbol)
+    operationSymbol = input("Pick an operation from the line above: ")
+    calculationFunction = operations[operationSymbol]\
 
-operationSymbol = input("Pick an operation from the line above: ")
+    num2 = float(input("What's the next number? "))
 
-calculationFunction = operations[operationSymbol]
+    print(f'{num1} {operationSymbol} {num2} = {calculationFunction(num1, num2)}')
 
-print(f'{num1} {operationSymbol} {num2} = {calculationFunction(num1, num2)}')
+    continueCalculation = input(
+        f"Type 'y' to continue calculating with {calculationFunction(num1, num2)}, type 'n' to start a new calculation or type anything else to exit: ")
+    if continueCalculation == "y":
+        num1 = calculationFunction(num1, num2)
+    elif continueCalculation == "n":
+        num1 = float(input("What's the first number? "))
+    else:
+        isRunning = False

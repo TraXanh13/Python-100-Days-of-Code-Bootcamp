@@ -21,17 +21,23 @@ for suit in suits:
         cards.append(card)
 
 random.shuffle(cards)
-isRunning = True
+isRunning, roundOver = True, False
 player1 = []
 player2 = []
 wins, losses = 0, 0
 
+def printHand(player):
+    hand = ""
+    for x in player:
+        hand += f"[{x['value']['suit']}] "
+    return hand
 
 def roundEnd():
-    global isRunning, player1, player2
+    global isRunning, roundOver, player1, player2
     if (input("Do you want to play again? (y/n) ") == "n"):
         isRunning = False
     else:
+        roundOver = False
         for x in player1:
             cards.append(x)
         for x in player2:
@@ -47,13 +53,26 @@ def getSum(player):
         sum += card['value']
     return sum
 
+def drawCard(player):
+    global cards
+    player.append(cards.pop())
 
 while (isRunning):
-    # if(player1[])
-    player1.append(cards.pop())
-    player2.append(cards.pop())
-
-    print(getSum(player1))
-    print(player2)
-
-    roundEnd()
+    hitOrPass = ''
+    if(getSum(Player1) > 21):
+        print("Bust")
+        roundOver = True
+    else:
+        print(f"Your Hand: {printHand(player1)})"
+        while hitOrPass not 'h' or hitOrPass not 'p':
+            hitOrPass = input("(H)it or (P)ass").lower()
+        if hitOrPass == 'p':
+            roundOver = True
+        else:
+            drawCard(player1)
+        
+#     player1.append(cards.pop())
+#     if(getSum(Player2) < 17):
+#         player2.append(cards.pop())    
+    if(roundOver):
+        roundEnd()

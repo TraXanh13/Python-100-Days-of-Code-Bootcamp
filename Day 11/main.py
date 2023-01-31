@@ -1,36 +1,50 @@
-import random
+import random, time
 
+isRunning, roundOver = True, False
 suits = ['♥', '♦️', '♠️', '♣️']
 cards = []
+player1 = []
+player2 = []
+wins, losses, ties = 0, 0, 0
 
 for suit in suits:
     for value in range(1, 14):
         card = {}
         card['suit'] = suit
-        card['value'] = value
+
+        if (value > 10):
+            card['value'] = 10
+        else:
+            card['value'] = value
+
+
         if (card['value'] == 1):
             card['symbol'] = 'A'
-        elif card['value'] == 11:
+        elif value == 11:
             card['symbol'] = 'J'
-        elif card['value'] == 12:
+        elif value == 12:
             card['symbol'] = 'Q'
-        elif card['value'] == 13:
+        elif value == 13:
             card['symbol'] = 'K'
         else:
             card['symbol'] = str(card['value'])
+
         cards.append(card)
 
 random.shuffle(cards)
-isRunning, roundOver = True, False
-player1 = []
-player2 = []
-wins, losses, ties = 0, 0, 0
 
 
 def printHand(player):
     hand = ""
     for x in player:
         hand += f"[{str(x['symbol'])}{x['suit']}] "
+    return hand
+
+def printDealerHand(player):
+    hand = ""
+    hand += f"[{str(player[0]['symbol'])}{player[0]['suit']}] "
+    for x in player[1:]:
+        hand += "[ ] "
     return hand
 
 
@@ -86,7 +100,8 @@ def replay():
             cards.append(x)
         player1 = []
         player2 = []
-        print("Shuffling cards...")
+        print("\n\nShuffling cards...\n\n")
+        time.sleep(1)
         random.shuffle(cards)
         player1.append(cards.pop())
         player2.append(cards.pop())
@@ -116,8 +131,9 @@ while (isRunning):
         roundOver = True
     else:
         print(f"Your Hand: {printHand(player1)} --> {getSum(player1)}")
+        print(f"Your Hand: {printDealerHand(player2)}")
         while hitOrPass != 'h' and hitOrPass != 'p':
-            hitOrPass = input("(H)it or (P)ass ").lower()
+            hitOrPass = input("(H)it or (P)ass ")[0].lower()
         if hitOrPass == 'p':
             roundOver = True
         else:

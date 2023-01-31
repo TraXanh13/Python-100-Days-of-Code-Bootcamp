@@ -103,8 +103,10 @@ def replay():
         print("\n\nShuffling cards...\n\n")
         time.sleep(1)
         random.shuffle(cards)
-        player1.append(cards.pop())
-        player2.append(cards.pop())
+        drawCard(player1)
+        drawCard(player1)
+        drawCard(player2)
+        drawCard(player2)
 
 
 def getSum(player):
@@ -122,6 +124,8 @@ def drawCard(player):
 
 
 drawCard(player1)
+drawCard(player1)
+drawCard(player2)
 drawCard(player2)
 
 while (isRunning):

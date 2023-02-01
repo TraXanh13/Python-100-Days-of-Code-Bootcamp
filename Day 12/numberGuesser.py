@@ -1,5 +1,7 @@
 import random
 
+EASY_LIVES = 10
+HARD_LIVES = 5
 # Generate a random number between 1 and 100
 num = random.randint(1, 101)
 guess = -1
@@ -11,10 +13,10 @@ while difficulty != 'easy' and difficulty != 'hard':
   difficulty = input("Choose a difficulty. Type 'easy' or 'hard': ").lower()
 
 if difficulty == "easy":
-  lives = 10
+  lives = EASY_LIVES
 
 elif difficulty == "hard":
-  lives = 5
+  lives = HARD_LIVES
 
 
 def check_guess(guess, num, lives):

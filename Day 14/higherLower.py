@@ -1,7 +1,8 @@
 import art
 import random as r
 from game_data import data as gd
-import time, os
+import time
+import os
 
 isRunning = True
 score = 0
@@ -48,4 +49,4 @@ while (isRunning):
 
     if (isRunning):
         time.sleep(0.5)
-        os.system("clear")
+        os.system("cls")

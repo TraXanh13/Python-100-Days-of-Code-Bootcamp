@@ -7,12 +7,14 @@ isRunning = True
 score = 0
 compareA = r.choice(gd)
 
-
+def printCompare(compare):
+    return f'{compare["name"]} a {compare["description"]} from {compare["country"]}'
+    
 def GameSetUp(compareA, compareB):
     print(art.logo)
-    print(
-        f'A: {compareA["name"]} a {compareA["description"]} from {compareA["country"]}\n\n{art.vs}\n\nB: {compareB["name"]} a {compareB["description"]} from {compareB["country"]}\n'
-    )
+    print(f"Compare A: {printCompare(compareA)}\n\n")
+    print(art.vs)
+    print(f"\n\nCompare B: {printCompare(compareB)}\n\n")
 
 
 def checkGuess(compareB, guess):

@@ -23,8 +23,8 @@ def right():
 sc.listen()
 sc.onkey(key="w", fun=forward)
 sc.onkey(key="s", fun=backward)
-sc.onkey(key="a", fun=right)
-sc.onkey(key="d", fun=left)
+sc.onkey(key="a", fun=left)
+sc.onkey(key="d", fun=right)
 
 
 sc.exitonclick()

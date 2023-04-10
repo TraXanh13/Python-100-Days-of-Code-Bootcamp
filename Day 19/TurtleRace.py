@@ -13,7 +13,9 @@ sc = Screen()
 sc.setup(width=500, height=400)
 sc.listen()
 
-bet = sc.textinput(title="Who will win?", prompt="Enter a color: ")
+choice = sc.textinput(title="Pick a color",
+                      prompt="Pick a color for your turtle: ")
+
 
 for turtle in turtles:
     turtle.shape("turtle")
@@ -27,6 +29,20 @@ def move_forward():
         turtle.forward(rand.randrange(5, 20))
 
 
-sc.onkey(key="space", fun=move_forward)
+def hasNoWinner():
+    for turtle in turtles:
+        if turtle.xcor() > 230:
+            if (turtle.color()[0] == choice.lower()):
+                sc.title(
+                    f"{turtle.color()[0].capitalize()} turtle won! You won!")
+            else:
+                sc.title(
+                    f"{turtle.color()[0].capitalize()} turtle won! You lost!")
+            return False
+    return True
+
+
+while hasNoWinner():
+    move_forward()
 
 sc.exitonclick()

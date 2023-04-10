@@ -13,6 +13,8 @@ sc = Screen()
 sc.setup(width=500, height=400)
 sc.listen()
 
+bet = sc.textinput(title="Who will win?", prompt="Enter a color: ")
+
 for turtle in turtles:
     turtle.shape("turtle")
     turtle.color(colors[turtles.index(turtle)])

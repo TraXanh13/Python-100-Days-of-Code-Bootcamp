@@ -10,11 +10,16 @@ sc.bgcolor("black")
 sc.title("🐍 Snek 🐍")
 sc.tracer(0)
 
-isRunning = True
+sc.listen()
+sc.onkey(snek.up, "Up")
+sc.onkey(snek.down, "Down")
+sc.onkey(snek.left, "Left")
+sc.onkey(snek.right, "Right")
 
+isRunning = True
 while isRunning:
     sc.update()
-    time.sleep(0.1)
+    time.sleep(0.05)
     snek.move()
 
 sc.exitonclick()

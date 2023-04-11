@@ -10,11 +10,11 @@ class Snek:
     def __init__(self):
         self.snek = []
         for i in range(3):
-            self.createSnek(i * -20, 0)
+            self.createSnekSeg(i * -20, 0)
 
         self.head = self.snek[0]
 
-    def createSnek(self, x, y):
+    def createSnekSeg(self, x, y):
         temp = Turtle("square")
         temp.color("white")
         temp.penup()

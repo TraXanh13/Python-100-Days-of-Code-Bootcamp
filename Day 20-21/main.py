@@ -1,8 +1,10 @@
 from turtle import Screen, Turtle
 import time
-import snek as snek
+from snek import Snek
+from food import Food
 
-snek = snek.Snek()
+snek = Snek()
+food = Food()
 
 sc = Screen()
 sc.setup(width=600, height=600)
@@ -19,7 +21,10 @@ sc.onkey(snek.right, "Right")
 isRunning = True
 while isRunning:
     sc.update()
-    time.sleep(0.05)
+    time.sleep(0.07)
     snek.move()
+
+    if (snek.head.distance(food) < 15):
+        food.moveFood()
 
 sc.exitonclick()

@@ -10,16 +10,19 @@ class Snek:
     def __init__(self):
         self.snek = []
         for i in range(3):
-            self.createSnekSeg(i * -20, 0)
+            self.addSnekSegment(i * -20, 0)
 
         self.head = self.snek[0]
 
-    def createSnekSeg(self, x, y):
+    def addSnekSegment(self, x, y):
         temp = Turtle("square")
         temp.color("white")
         temp.penup()
         temp.goto(x, y)
         self.snek.append(temp)
+
+    def extendSnek(self):
+        self.addSnekSegment(self.snek[-1].xcor(), self.snek[-1].ycor())
 
     def move(self):
         for seg in range(len(self.snek)-1, 0, -1):

@@ -29,10 +29,15 @@ while isRunning:
     if (snek.head.distance(food) < 15):
         food.moveFood()
         score.updateScore()
-        snek.createSnekSeg(snek.head.xcor(), snek.head.ycor())
+        snek.extendSnek()
 
     if (snek.head.xcor() > 280 or snek.head.xcor() < -280 or snek.head.ycor() > 280 or snek.head.ycor() < -280):
         isRunning = False
         score.gameOver()
+
+    for seg in snek.snek[1:]:
+        if (snek.head.distance(seg) < 10):
+            isRunning = False
+            score.gameOver()
 
 sc.exitonclick()

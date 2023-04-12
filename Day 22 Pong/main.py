@@ -10,8 +10,8 @@ sc.bgcolor("black")
 sc.title("🏓 Pong 🏓")
 sc.tracer(0)
 
-player1 = PlayerPaddle(-350, 0)
-player2 = Paddle(350, 0)
+player1 = PlayerPaddle(350, 0)
+player2 = Paddle(-350, 0)
 ball = Ball()
 
 
@@ -22,6 +22,8 @@ sc.onkeypress(player1.down, "Down")
 gameIsOn = True
 while gameIsOn:
     ball.move()
+    ball.paddleCollision(player1)
+    ball.paddleCollision(player2)
     sc.update()
     time.sleep(0.05)
 

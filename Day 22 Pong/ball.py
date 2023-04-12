@@ -1,4 +1,7 @@
 from turtle import Turtle
+from score import Score
+
+score = Score()
 
 BALL_SPEED = 10
 
@@ -18,8 +21,12 @@ class Ball(Turtle):
         if (self.ycor() > 280 or self.ycor() < -280):
             self.bounce_y()
 
-        if (self.xcor() > 380 or self.xcor() < -380):
+        if (self.xcor() > 380):
             self.reset()
+            score.l_point()
+        if (self.xcor() < -380):
+            self.reset()
+            score.r_point()
 
     def bounce_x(self):
         self.x_move *= -1

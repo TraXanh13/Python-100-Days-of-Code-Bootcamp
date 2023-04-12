@@ -2,6 +2,5 @@ from paddle import Paddle
 
 
 class PlayerPaddle(Paddle):
-    def __init__(self):
-        super().__init__()
-        self.goto(-350, 0)
+    def __init__(self, x, y):
+        super().__init__(x, y)

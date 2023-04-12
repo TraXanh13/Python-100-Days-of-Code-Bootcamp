@@ -1,7 +1,7 @@
 import time
 from turtle import Screen
 from paddle import Paddle
-from playerPaddle import PlayerPaddle
+from computerPaddle import ComputerPaddle
 from ball import Ball
 
 sc = Screen()
@@ -10,8 +10,8 @@ sc.bgcolor("black")
 sc.title("🏓 Pong 🏓")
 sc.tracer(0)
 
-player1 = PlayerPaddle(350, 0)
-player2 = Paddle(-350, 0)
+player1 = Paddle(-350, 0)
+player2 = ComputerPaddle(350, 0)
 ball = Ball()
 
 
@@ -24,6 +24,7 @@ while gameIsOn:
     ball.move()
     ball.paddleCollision(player1)
     ball.paddleCollision(player2)
+    player2.computerMove(ball)
     sc.update()
     time.sleep(0.05)
 

@@ -15,3 +15,6 @@ class Player(Turtle):
 
     def down(self):
         self.backward(20)
+
+    def reset(self):
+        self.goto(0, -250)

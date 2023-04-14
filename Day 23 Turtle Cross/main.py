@@ -45,12 +45,13 @@ while isAlive:
     for car in cars:
         if player.collision(car):
             isAlive = False
+            level.gameOver()
             break
         car.move()
         if car.xcor() < -300:
             car.reset()
-    time.sleep(0.05)
     sc.update()
+    time.sleep(0.05)
 
 
 sc.exitonclick()

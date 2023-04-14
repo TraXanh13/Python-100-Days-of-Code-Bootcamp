@@ -20,3 +20,8 @@ class Level(Turtle):
     def nextLevel(self):
         self.level += 1
         self.updateLevel()
+
+    def gameOver(self):
+        self.goto(0, 0)
+        self.write(f"Game Over", align="center",
+                   font=("Courier", 15, "normal"))

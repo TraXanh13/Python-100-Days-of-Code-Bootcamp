@@ -14,22 +14,38 @@ level = Level()
 player = Player()
 cars = []
 
-for _ in range(10):
-    car = Car()
-    cars.append(car)
-
 sc.listen()
 sc.onkey(player.up, "Up")
 sc.onkey(player.down, "Down")
+
+
+def nextLevel():
+    level.nextLevel()
+    player.reset()
+    addCars(2)
+    for car in cars:
+        car.reset()
+        car.increaseSpeed()
+
+
+def addCars(numOfCars):
+    for _ in range(numOfCars):
+        car = Car()
+        cars.append(car)
+
+
+addCars(5)
 
 isAlive = True
 
 while isAlive:
     if (player.ycor() > 230):
-        isAlive = False
-        level.nextLevel()
+        nextLevel()
 
     for car in cars:
+        if player.collision(car):
+            isAlive = False
+            break
         car.move()
         if car.xcor() < -300:
             car.reset()

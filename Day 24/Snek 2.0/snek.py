@@ -45,3 +45,9 @@ class Snek:
     def right(self):
         if (self.head.heading() != LEFT):
             self.head.setheading(RIGHT)
+
+    def reset(self):
+        for seg in self.snek:
+            seg.goto(1000, 1000)
+        self.snek.clear()
+        self.__init__()

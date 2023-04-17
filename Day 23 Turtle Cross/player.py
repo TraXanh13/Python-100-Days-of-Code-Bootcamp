@@ -15,3 +15,12 @@ class Player(Turtle):
 
     def down(self):
         self.backward(20)
+
+    def collision(self, car):
+        if self.distance(car) < 20:
+            return True
+        else:
+            return False
+
+    def reset(self):
+        self.goto(0, -250)

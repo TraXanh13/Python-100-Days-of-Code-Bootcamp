@@ -8,10 +8,21 @@ class Car(Turtle):
     def __init__(self):
         super().__init__()
         self.shape("square")
-        self.color(COLORS[randint(0, len(COLORS))])
+        self.color(COLORS[randint(0, len(COLORS)-1)])
         self.penup()
         self.setheading(180)
-        self.goto(300, 0)
+        self.goto(300, randint(-230, 230))
+        self.shapesize(stretch_wid=1, stretch_len=2)
+        self.speed = randint(5, 15)
 
     def move(self):
-        self.forward(20)
+        self.forward(self.speed)
+
+    def reset(self):
+        self.goto(300, randint(-230, 230))
+        self.color(COLORS[randint(0, len(COLORS)-1)])
+
+    def increaseSpeed(self):
+        self.speed += randint(1, 5)
+        if (self.speed > 25):
+            self.speed = randint(5, 25)

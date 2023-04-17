@@ -31,7 +31,7 @@ while isRunning:
         score.updateScore()
         snek.extendSnek()
 
-    if (snek.head.xcor() > 280 or snek.head.xcor() < -280 or snek.head.ycor() > 280 or snek.head.ycor() < -280):
+    if (snek.head.xcor() > 280 or snek.head.xcor() < -300 or snek.head.ycor() > 300 or snek.head.ycor() < -280):
         isRunning = False
         score.gameOver()
 

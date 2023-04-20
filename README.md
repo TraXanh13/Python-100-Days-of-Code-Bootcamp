@@ -87,3 +87,21 @@ Udemy Course: https://www.udemy.com/course/100-days-of-code/
 ### Day 20 - Day 21
 
 &nbsp;&nbsp;&nbsp;Snake Game
+
+### Day 22
+
+&nbsp;&nbsp;&nbsp;Pong
+
+### Day 23
+
+&nbsp;&nbsp;&nbsp;Turtle Cross
+
+### Day 24
+
+&nbsp;&nbsp;&nbsp;Mail Merge\
+&nbsp;&nbsp;&nbsp;Snake with highscores\
+&nbsp;&nbsp;&nbsp;Reading - Writing files
+
+### Day 25
+
+&nbsp;&nbsp;&nbsp;CSV & Pandas

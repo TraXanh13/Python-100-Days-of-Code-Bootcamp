@@ -4,7 +4,7 @@ from turtle import Screen, Turtle
 class Score(Turtle):
     def __init__(self):
         super().__init__()
-        with open("highscore.txt") as f:
+        with open("./Day 24/Snek 2.0/highscore.txt") as f:
             score = f.read()
             if score == "":
                 self.highScore = 0
@@ -33,8 +33,8 @@ class Score(Turtle):
     def reset(self):
         if self.score > self.highScore:
             self.highScore = self.score
-            
-            with open("highscore.txt", "w") as f:
+
+            with open("C:/Users/minia/Documents/Projects/Python-100-Days-of-Code-Bootcamp/Day 24/Snek 2.0/highscore.txt", "w") as f:
                 f.write(str(self.highScore))
 
         self.score = 0

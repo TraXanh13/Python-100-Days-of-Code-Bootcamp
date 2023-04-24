@@ -22,3 +22,4 @@ data = pandas.read_csv(
     "C:/Users/minia/Documents/Projects/Python-100-Days-of-Code-Bootcamp/Day 25/weather_data.csv")
 
 print(data)
+print(f"\n{data['temp']}")

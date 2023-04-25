@@ -7,8 +7,6 @@ greys = len(data[data["Primary Fur Color"] == "Gray"])
 reds = len(data[data["Primary Fur Color"] == "Cinnamon"])
 blacks = len(data[data["Primary Fur Color"] == "Black"])
 
-print(f"{reds}\n{greys}\n{blacks}")
-
 squirrelData = {
     "Fur Color": ["Grey", "Red", "Black"],
     "Count": [greys, reds, blacks]

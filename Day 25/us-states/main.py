@@ -1,14 +1,17 @@
 import turtle, pandas
 
+PATH = "C:/Users/minia/Documents/Projects/Python-100-Days-of-Code-Bootcamp/Day 25/us-states/"
 statesGuessed = [];
+missingStates = []
 answer = ""
 
 screen = turtle.Screen()
 screen.title("U.S. States Game")
 
-image = "C:/Users/minia/Documents/Projects/Python-100-Days-of-Code-Bootcamp/Day 25/us-states/blank_states_img.gif"
+image = f"{PATH}blank_states_img.gif"
 
-data = pandas.read_csv("C:/Users/minia/Documents/Projects/Python-100-Days-of-Code-Bootcamp/Day 25/us-states/50_states.csv")
+data = pandas.read_csv(f"{PATH}50_states.csv")
+allStates = data.state.to_list()
 
 screen.addshape(image)
 turtle.shape(image)
@@ -17,10 +20,19 @@ stateTurtle = turtle.Turtle()
 stateTurtle.penup()
 stateTurtle.hideturtle()
 
-while answer != "Exit" and len(statesGuessed) < 50:
+while len(statesGuessed) < 50:
     answer = screen.textinput(title=f"{len(statesGuessed)}/50 Guess the State", prompt="Guess a state's name?").title()
 
+    if answer == "Exit":
+        for state in allStates:
+            if state not in statesGuessed:
+                missingStates.append(state)
+        newData = pandas.DataFrame(missingStates)
+        newData.to_csv(f"{PATH}missingStates.csv")
+        break
+
     if answer in data.state.values:
-        stateTurtle.goto(int(data[data.state == answer].x), int(data[data.state == answer].y))
+        stateData = data[data.state == answer]
+        stateTurtle.goto(int(stateData.x), int(stateData.y))
         stateTurtle.write(answer)
-        statesGuessed.append(data[data.state == answer])
+        statesGuessed.append(answer)
